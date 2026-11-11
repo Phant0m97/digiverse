@@ -1,5 +1,37 @@
 <!DOCTYPE html><html lang="en"><head><meta name="twitter:card" content="summary_large_image"><meta property="og:title" content="Digiverse"><meta property="og:type" content="x:game"><meta property="og:image" content="https://digiverse2.grok.me/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="x:game:image" content="https://digiverse2.grok.me/x-banner.jpg"><meta property="x:game:image:width" content="1200"><meta property="x:game:image:height" content="264"><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" as="image" href="/digiverse/digiverse-wordmark.png"/><link rel="stylesheet" href="/digiverse/assets/styles-DFbjqMfq.css" data-precedence="default"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&amp;family=Syne:wght@700;800&amp;display=swap" data-precedence="default"/><title>Digiverse</title><meta name="description" content="Chat with friends, then settle it in paintball."/><meta name="theme-color" content="#12141a"/><link rel="modulepreload" href="/digiverse/assets/index-CLE9dIbz.js?v=2"/><link rel="modulepreload" href="/digiverse/assets/react-DB-4Zxce.js"/><link rel="modulepreload" href="/digiverse/assets/preload-helper-D3FTNRbL.js"/><link rel="modulepreload" href="/digiverse/assets/lazyRouteComponent-CxQchsWf.js"/><link rel="modulepreload" href="/digiverse/assets/routes-jBGprdxO.js"/><link rel="modulepreload" href="/digiverse/assets/bits-C9EYecLW.js"/><link rel="modulepreload" href="/digiverse/assets/draw-Dxoamm_M.js"/><link rel="modulepreload" href="/digiverse/assets/TouchControls-DC2cjgsX.js"/><link rel="icon" type="image/svg+xml" href="/digiverse/favicon.svg"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><link rel="manifest" href="/digiverse/__grok/manifest.webmanifest"/><link rel="apple-touch-icon" href="/digiverse/__grok/icon-180.png"/><meta name="apple-mobile-web-app-title" content="Digiverse"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="grok-project-id" content="01a1ac7d-513e-7363-9512-d486270852e0"><script src="https://grok.com/grok-app-builder/extensions.js" data-project-id="01a1ac7d-513e-7363-9512-d486270852e0" defer></script><meta property="grok:app_id" content="01a1ac7d-513e-7363-9512-d486270852e0"><meta property="x:creator" content="@tardwife4life"><meta property="x:creator:id" content="1862683617740075008"></head><body><script>
 (function(){
+  function fixPath() {
+    var p = location.pathname;
+    var fixed = p.replace(/\/digiverse(\/digiverse)+/g, '/digiverse');
+    if (fixed === '/digiverse') fixed = '/digiverse/';
+    if (fixed !== p) {
+      history.replaceState(null, '', fixed + location.search + location.hash);
+      return true;
+    }
+    return false;
+  }
+  // Run immediately
+  if (fixPath()) {
+    location.reload();
+    return;
+  }
+  // Watch for future changes
+  var origPush = history.pushState;
+  var origReplace = history.replaceState;
+  history.pushState = function() {
+    origPush.apply(this, arguments);
+    if (fixPath()) location.reload();
+  };
+  history.replaceState = function() {
+    origReplace.apply(this, arguments);
+    if (fixPath()) location.reload();
+  };
+  window.addEventListener('popstate', function() {
+    if (fixPath()) location.reload();
+  });
+})();
+</script><script>
+(function(){
   var p = location.pathname;
   // Collapse multiple /digiverse
   var fixed = p.replace(/\/digiverse(\/digiverse)+/g, '/digiverse');
